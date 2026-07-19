@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -16,6 +15,7 @@ import {
 } from "@/lib/publication";
 import { extractToc } from "@/lib/toc";
 import { mdxComponents } from "@/components/mdx-components";
+import { PlateFigure } from "@/components/PlateFigure";
 import { TocNav, MobileToc } from "@/components/TocNav";
 import { ChapterPager } from "@/components/ChapterPager";
 
@@ -50,11 +50,27 @@ export default async function ChapterPage({
   const isPublished = chapter.status === "published";
   const toc = isPublished ? extractToc(chapter.body) : [];
 
+  const plateLabel = (i: number) =>
+    `${formatChapterNumber(chapter.order)}${chapter.plates.length > 1 ? `.${i + 1}` : ""}`;
+
+  // Plates placed inline via <Plate id="..."/> in the MDX body; the rest
+  // render as a grid after the chapter text.
+  const referenced = new Set(
+    [...chapter.body.matchAll(/<Plate\s+id="([^"]+)"/g)].map((m) => m[1])
+  );
+  const unplaced = chapter.plates.filter((p) => !referenced.has(p.id));
+
+  function Plate({ id }: { id: string }) {
+    const i = chapter!.plates.findIndex((p) => p.id === id);
+    if (i === -1) return null;
+    return <PlateFigure plate={chapter!.plates[i]} label={plateLabel(i)} />;
+  }
+
   const content = isPublished
     ? (
         await compileMDX({
           source: chapter.body,
-          components: mdxComponents,
+          components: { ...mdxComponents, Plate },
           options: {
             mdxOptions: {
               remarkPlugins: [remarkGfm],
@@ -83,25 +99,6 @@ export default async function ChapterPage({
             </p>
           </header>
 
-          {chapter.plates.map((plate, i) => (
-            <figure key={plate.src} className="mb-10">
-              <div className="shadow-print border border-ink">
-                <Image
-                  src={plate.src}
-                  alt={plate.alt}
-                  width={plate.width}
-                  height={plate.height}
-                  priority={i === 0}
-                  className="block w-full"
-                />
-              </div>
-              <figcaption className="mt-2.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.16em] text-ink-faint">
-                ✴ Plate {formatChapterNumber(chapter.order)}
-                {chapter.plates.length > 1 ? `.${i + 1}` : ""} · {plate.caption}
-              </figcaption>
-            </figure>
-          ))}
-
           <MobileToc entries={toc} />
 
           {isPublished ? (
@@ -120,6 +117,24 @@ export default async function ChapterPage({
                 editorial workspace.
               </p>
             </div>
+          )}
+
+          {unplaced.length > 0 && (
+            <section aria-label="Plates" className="mt-12">
+              <div className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                {unplaced.map((plate) => {
+                  const i = chapter.plates.indexOf(plate);
+                  return (
+                    <div
+                      key={plate.src}
+                      className={plate.display === "full" ? "sm:col-span-2" : ""}
+                    >
+                      <PlateFigure plate={plate} label={plateLabel(i)} />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
           )}
 
           {related.length > 0 && (

@@ -36,37 +36,43 @@ export default function FrontierLanding() {
             Frontier
           </h1>
 
-          <div className="shadow-print mt-8 border border-ink">
-            <Image
-              src="/plates/hero.png"
-              alt="Dithered field-guide plate: an acid-yellow sun rising over frontier ridges, a skyline, and a river of settlement nodes"
-              width={1600}
-              height={900}
-              priority
-              className="block w-full"
-            />
+          <div className="mt-8 grid items-start gap-8 sm:grid-cols-[1fr_17rem]">
+            <div>
+              <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
+                An atlas of emerging political and settlement concepts. The
+                guide moves from foundational political language — nation,
+                state, sovereignty — into the architecture of settlement, and
+                ends in a living case study: ATX, a Settlemint in formation.
+              </p>
+              <Link
+                href={chapterRoute(firstChapter.slug)}
+                className="shadow-print-sm mt-6 inline-block border border-ink bg-ink px-6 py-3.5 text-center font-mono text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-paper transition-colors duration-150 hover:bg-accent active:translate-x-px active:translate-y-px active:shadow-none"
+              >
+                Start reading → CH_01
+              </Link>
+              <p className="mt-8 border-t border-rule pt-3 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
+                Status: {formatChapterNumber(publishedCount)}/
+                {formatChapterNumber(chapters.length)} chapters published
+                <br />
+                Reading order below
+              </p>
+            </div>
+            <figure className="mx-auto w-full max-w-[17rem]">
+              <div className="shadow-print border border-ink">
+                <Image
+                  src="/plates/building-living-nations-cover.webp"
+                  alt="Guide cover: Building Living Nations — a field guide to Settlemints and network states, with a live oak, mission ruins, a golden sun, and a container module village"
+                  width={1122}
+                  height={1402}
+                  priority
+                  className="block w-full"
+                />
+              </div>
+              <figcaption className="mt-2 text-center font-mono text-[0.58rem] uppercase tracking-[0.16em] text-ink-faint">
+                ✴ Guide No. 001 · MMXXVI
+              </figcaption>
+            </figure>
           </div>
-
-          <div className="mt-8 grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
-            <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
-              An atlas of emerging political and settlement concepts. The guide
-              moves from foundational political language — nation, state,
-              sovereignty — into the architecture of settlement, and ends in a
-              living case study: ATX, a Settlemint in formation.
-            </p>
-            <Link
-              href={chapterRoute(firstChapter.slug)}
-              className="shadow-print-sm inline-block shrink-0 border border-ink bg-ink px-6 py-3.5 text-center font-mono text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-paper transition-colors duration-150 hover:bg-accent active:translate-x-px active:translate-y-px active:shadow-none"
-            >
-              Start reading → CH_01
-            </Link>
-          </div>
-
-          <p className="mt-6 border-t border-rule pt-3 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
-            Status: {formatChapterNumber(publishedCount)}/
-            {formatChapterNumber(chapters.length)} chapters published · reading
-            order below
-          </p>
         </header>
 
         {/* Table of contents */}

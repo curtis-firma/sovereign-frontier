@@ -14,11 +14,15 @@ import matter from "gray-matter";
  */
 
 export interface ChapterPlate {
+  /** Stable id used by inline <Plate id="..."/> references (src basename). */
+  id: string;
   src: string;
   width: number;
   height: number;
   alt: string;
   caption: string;
+  /** "full" spans the reading column; "half" renders at reduced width. */
+  display: "full" | "half";
 }
 
 export interface Chapter {
@@ -79,11 +83,13 @@ export function getChapters(): Chapter[] {
       plates: Array.isArray(data.plates)
         ? data.plates.map(
             (p: Record<string, unknown>): ChapterPlate => ({
+              id: String(p.src).split("/").pop()!.replace(/\.\w+$/, ""),
               src: String(p.src),
               width: Number(p.width),
               height: Number(p.height),
               alt: String(p.alt ?? ""),
               caption: String(p.caption ?? ""),
+              display: p.display === "half" ? "half" : "full",
             })
           )
         : [],
