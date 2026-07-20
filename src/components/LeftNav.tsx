@@ -129,7 +129,7 @@ export function LeftNav({
           The library
         </p>
         <Link
-          href="/standard"
+          href="/handbook"
           onClick={onNavigate}
           className="mt-1 flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
         >
@@ -137,7 +137,7 @@ export function LeftNav({
             02
           </span>
           <span>
-            The Frontier Standard
+            The Settlemint Handbook
             <PendingTag />
           </span>
         </Link>
@@ -151,6 +151,19 @@ export function LeftNav({
           </span>
           <span>
             The Firma Architecture
+            <PendingTag />
+          </span>
+        </Link>
+        <Link
+          href="/standard"
+          onClick={onNavigate}
+          className="flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
+        >
+          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
+            04
+          </span>
+          <span>
+            The Frontier Standard
             <PendingTag />
           </span>
         </Link>
