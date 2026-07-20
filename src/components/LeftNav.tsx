@@ -124,6 +124,36 @@ export function LeftNav({
           </span>
           <span>Glossary</span>
         </Link>
+
+        <p className="mt-4 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
+          The library
+        </p>
+        <Link
+          href="/standard"
+          onClick={onNavigate}
+          className="mt-1 flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
+        >
+          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
+            02
+          </span>
+          <span>
+            The Frontier Standard
+            <PendingTag />
+          </span>
+        </Link>
+        <Link
+          href="/architecture"
+          onClick={onNavigate}
+          className="flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
+        >
+          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
+            03
+          </span>
+          <span>
+            The Firma Architecture
+            <PendingTag />
+          </span>
+        </Link>
       </div>
     </nav>
   );

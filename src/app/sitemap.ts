@@ -10,5 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     { url: `${base}/frontier/glossary`, priority: 0.5 },
+    { url: `${base}/standard`, priority: 0.3 },
+    { url: `${base}/architecture`, priority: 0.3 },
   ];
 }

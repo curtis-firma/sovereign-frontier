@@ -7,6 +7,7 @@ import {
   getChapters,
   getParts,
 } from "@/lib/publication";
+import { volumeNumber, volumes } from "@/lib/volumes";
 
 export const metadata: Metadata = {
   title: "The Sovereign Frontier",
@@ -153,6 +154,38 @@ export default function FrontierLanding() {
               </Link>
             </div>
           </div>
+        </section>
+
+        <section aria-label="The library" className="mt-16 border-t-2 border-ink pt-5">
+          <h2 className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink-faint">
+            ✴ The library
+          </h2>
+          <ul className="mt-4 divide-y divide-rule border-y border-ink">
+            {volumes.map((volume) => (
+              <li key={volume.id}>
+                <Link
+                  href={volume.route}
+                  className="group flex items-baseline gap-4 px-3 py-3.5 transition-colors duration-150 hover:bg-white/70"
+                >
+                  <span className="shrink-0 font-mono text-xs text-ink-faint">
+                    VOL_{volumeNumber(volume.number)}
+                  </span>
+                  <span className="min-w-0 flex-1 font-sans text-base font-bold tracking-tight text-ink group-hover:text-accent">
+                    {volume.title}
+                  </span>
+                  <span
+                    className={`shrink-0 border px-1.5 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.12em] ${
+                      volume.status === "complete"
+                        ? "border-mesquite text-mesquite"
+                        : "border-ink-faint/60 text-ink-faint"
+                    }`}
+                  >
+                    {volume.status}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section
