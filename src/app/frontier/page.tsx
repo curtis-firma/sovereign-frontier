@@ -155,7 +155,26 @@ export default function FrontierLanding() {
           </div>
         </section>
 
-        <footer className="mt-16 border-t-2 border-ink pt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
+        <section
+          aria-label="Colophon"
+          className="mt-16 border-t-2 border-ink pt-5"
+        >
+          <h2 className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink-faint">
+            ✴ Colophon
+          </h2>
+          <p className="mt-3 max-w-xl font-serif text-[0.95rem] leading-relaxed text-ink-soft">
+            The Sovereign Frontier is original work. Its framework, categories,
+            and definitions were developed in the Firma editorial workspace,
+            and the chapters are the canonical source for every term this
+            guide uses. Chapter 02 engages the network-state thesis as
+            articulated in Balaji Srinivasan&apos;s{" "}
+            <em>The Network State</em> (2022); the &ldquo;original
+            formulation&rdquo; quoted there is his. By the guide&apos;s own
+            discipline, its claims remain claims until proven.
+          </p>
+        </section>
+
+        <footer className="mt-10 border-t border-rule pt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
           ✴ The publication reads in order. Each chapter stands on its own.
         </footer>
       </div>
