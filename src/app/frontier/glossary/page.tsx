@@ -1,15 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { chapterRoute, getChapters } from "@/lib/publication";
+import { chapterRoute, formatChapterNumber, getChapter } from "@/lib/publication";
+import { getGlossary } from "@/lib/glossary";
 
 export const metadata: Metadata = {
   title: "Glossary",
-  description: "The working vocabulary of The Sovereign Frontier.",
+  description:
+    "The working vocabulary of The Sovereign Frontier, gathered from the chapters where each term is defined.",
 };
 
 export default function GlossaryPage() {
-  const firstChapter = getChapters()[0];
+  const entries = getGlossary();
+
+  // Group alphabetically, ignoring a leading "The ".
+  const groups = new Map<string, typeof entries>();
+  for (const entry of entries) {
+    const letter = entry.term.replace(/^The /, "")[0].toUpperCase();
+    if (!groups.has(letter)) groups.set(letter, []);
+    groups.get(letter)!.push(entry);
+  }
 
   return (
     <main className="px-5 py-10 sm:px-8 lg:px-14 lg:py-14">
@@ -17,18 +27,20 @@ export default function GlossaryPage() {
         <header className="mb-10">
           <p className="flex flex-wrap items-baseline justify-between gap-2 border-b-2 border-ink pb-3 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink">
             <span>✴ Appendix</span>
-            <span>GLOSSARY</span>
+            <span>{entries.length} terms</span>
           </p>
           <h1 className="mt-6 font-sans text-3xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl">
             Glossary
           </h1>
           <p className="mt-4 border-b border-rule pb-8 text-lg leading-relaxed text-ink-soft">
-            The guide&apos;s working vocabulary, gathered in one place.
+            The guide&apos;s working vocabulary, gathered in one place. Every
+            definition is quoted from the chapter where the term is
+            established — follow the reference to read it in context.
           </p>
         </header>
 
-        <figure className="mb-10">
-          <div className="shadow-print border border-ink">
+        <figure className="mb-12">
+          <div className="shadow-print-sm border border-ink">
             <Image
               src="/plates/symbol-library.webp"
               alt="Field-guide plate: the Settlemint symbol library — sun, mission arch, grove, grid module, coordinate marker, wave, district seal, container star, settlement emblem, and graphic devices, with the five-color palette"
@@ -44,25 +56,48 @@ export default function GlossaryPage() {
           </figcaption>
         </figure>
 
-        <div className="shadow-print border border-ink bg-white/60 px-6 py-10 text-center">
-          <p className="inline-block border border-clay px-2 py-1 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-clay">
-            Status: forthcoming
-          </p>
-          <p className="mt-4 font-sans text-xl font-bold tracking-tight text-ink">
-            The written glossary arrives after all chapters are approved.
-          </p>
-          <p className="mx-auto mt-2 max-w-md text-base leading-relaxed text-ink-soft">
-            Until then, key terms are defined where they first appear —
-            beginning with{" "}
-            <Link
-              href={chapterRoute(firstChapter.slug)}
-              className="text-accent underline underline-offset-4"
-            >
-              Chapter 01
-            </Link>
-            .
-          </p>
+        <div className="space-y-10">
+          {[...groups.entries()].map(([letter, group]) => (
+            <section key={letter} aria-label={`Terms beginning with ${letter}`}>
+              <h2 className="border-b-2 border-ink pb-2 font-mono text-sm font-bold text-accent">
+                {letter}
+              </h2>
+              <dl className="mt-4 space-y-6">
+                {group.map((entry) => {
+                  const chapter = getChapter(entry.source);
+                  const href =
+                    chapterRoute(entry.source) +
+                    (entry.anchor ? `#${entry.anchor}` : "");
+                  return (
+                    <div key={entry.term}>
+                      <dt className="font-sans text-lg font-bold tracking-tight text-ink">
+                        {entry.term}
+                      </dt>
+                      <dd className="mt-1 font-serif text-[1.02rem] leading-relaxed text-ink-soft">
+                        {entry.definition}
+                      </dd>
+                      {chapter && (
+                        <dd className="mt-1.5">
+                          <Link
+                            href={href}
+                            className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accent hover:underline"
+                          >
+                            → CH_{formatChapterNumber(chapter.order)} ·{" "}
+                            {chapter.title}
+                          </Link>
+                        </dd>
+                      )}
+                    </div>
+                  );
+                })}
+              </dl>
+            </section>
+          ))}
         </div>
+
+        <footer className="mt-16 border-t-2 border-ink pt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
+          ✴ Definitions are canon from the chapters. The chapters govern.
+        </footer>
       </article>
     </main>
   );

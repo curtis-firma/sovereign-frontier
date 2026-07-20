@@ -122,10 +122,7 @@ export function LeftNav({
           <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-clay">
             ✴
           </span>
-          <span>
-            Glossary
-            <PendingTag />
-          </span>
+          <span>Glossary</span>
         </Link>
       </div>
     </nav>

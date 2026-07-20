@@ -145,12 +145,9 @@ export default function FrontierLanding() {
                 <span>
                   <span className="block font-sans text-lg font-bold leading-snug tracking-tight text-ink group-hover:text-accent">
                     Glossary
-                    <span className="ml-2 inline-block translate-y-[-2px] border border-ink-faint/60 px-1.5 py-0.5 align-middle font-mono text-[0.55rem] font-medium uppercase tracking-[0.12em] text-ink-faint">
-                      soon
-                    </span>
                   </span>
                   <span className="mt-1 block font-serif text-[0.95rem] leading-relaxed text-ink-soft">
-                    The guide&apos;s working vocabulary, gathered in one place.
+                    The guide&apos;s working vocabulary, gathered in one place — every definition quoted from its chapter.
                   </span>
                 </span>
               </Link>
