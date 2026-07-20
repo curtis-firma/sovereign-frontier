@@ -21,7 +21,7 @@ plates throughout.
 | Layouts and pages | `src/app/frontier/` |
 | Navigation, search, plate components | `src/components/` |
 | Typography and theme | `src/app/globals.css` |
-| Plate artwork | `public/plates/` (generator for dither plates: `scripts/make_plates.py`) |
+| Plate artwork | `public/plates/` (sourced from the ATX Settlemint design system and supplied field-guide plates) |
 
 The frontmatter of the MDX files is the single source of truth: chapter
 order, Part grouping, status, summaries, related chapters, and plates all

@@ -13,6 +13,25 @@ export const metadata: Metadata = {
   title: "The Sovereign Frontier",
 };
 
+const PART_PLATES: Record<number, { src: string; alt: string }> = {
+  1: {
+    src: "/plates/part-foundations.webp",
+    alt: "ATX Settlemint poster: 'Austin was always a frontier.' — mission ruins and the Austin skyline before a golden sun",
+  },
+  2: {
+    src: "/plates/part-settlement.webp",
+    alt: "ATX Settlemint poster: 'The settlement is the protocol.' — a fireside circle beneath a live oak at dusk",
+  },
+  3: {
+    src: "/plates/part-architecture.webp",
+    alt: "ATX Settlemint poster: 'Land. Energy. Compute. Covenant.' — a solar-topped container module in the landscape",
+  },
+  4: {
+    src: "/plates/part-in-practice.webp",
+    alt: "ATX Settlemint poster: 'A place to build what comes next.' — the compute module standing ready in the brush",
+  },
+};
+
 export default function FrontierLanding() {
   const parts = getParts();
   const chapters = getChapters();
@@ -84,10 +103,10 @@ export default function FrontierLanding() {
                 <div>
                   <div className="shadow-print-sm border border-ink">
                     <Image
-                      src={`/plates/part-${part.number}.png`}
-                      alt=""
-                      width={640}
-                      height={640}
+                      src={PART_PLATES[part.number].src}
+                      alt={PART_PLATES[part.number].alt}
+                      width={1016}
+                      height={1548}
                       className="block w-full"
                     />
                   </div>
