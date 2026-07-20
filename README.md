@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Sovereign Frontier
 
-## Getting Started
+A field guide to nations, network states, sovereignty, and settlement — from
+foundational political language to a living Settlemint case study.
 
-First, run the development server:
+**Live:** https://sovereign-frontier.netlify.app/frontier
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+One unified publication: ten chapters in four Parts plus a glossary, read
+through a single shell with persistent chapter navigation, per-section
+"On this page" rails, full-text search (⌘K), and illustrated field-guide
+plates throughout.
+
+## Structure
+
+| Concern | Where |
+| --- | --- |
+| Chapter content (MDX + frontmatter) | `content/frontier/*.mdx` |
+| Publication registry — order, Parts, routes, nav, prev/next, plates | `src/lib/publication.ts` |
+| Glossary (definitions quoted verbatim from chapters) | `src/lib/glossary.ts` |
+| Search index builder | `src/lib/search.ts` |
+| Layouts and pages | `src/app/frontier/` |
+| Navigation, search, plate components | `src/components/` |
+| Typography and theme | `src/app/globals.css` |
+| Plate artwork | `public/plates/` (generator for dither plates: `scripts/make_plates.py`) |
+
+The frontmatter of the MDX files is the single source of truth: chapter
+order, Part grouping, status, summaries, related chapters, and plates all
+derive from it. Nothing else hard-codes publication structure.
+
+## Development
+
+```
+npm install
+npm run dev      # local dev
+npm run lint
+npx tsc --noEmit
+npm run build    # static production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content pipeline
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Editorial work happens in Notion; approved chapters are imported through a
+controlled PR-based sync — see [SYNCING.md](SYNCING.md). Definitions and
+doctrine are quoted verbatim from the approved canon; the site never
+rewrites them.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ATX Settlemint treatment: Bone ground, Ink typography, Texas Blue signal,
+Mission Coral and Acid Sun accents; Space Grotesk headlines, JetBrains Mono
+technical labels, Newsreader long-form text; Swiss hairline rules, hard
+offset shadows, and dithered field-guide plates.
