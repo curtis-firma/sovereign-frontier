@@ -46,6 +46,12 @@ body {
   color: var(--color-ink);
 }
 
+mark {
+  background: var(--color-acid);
+  color: var(--color-ink);
+  padding: 0 1px;
+}
+
 /* Offset anchored headings below the sticky mobile header. */
 .reading h2,
 .reading h3 {

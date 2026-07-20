@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavPart } from "@/lib/publication";
 import { LeftNav } from "./LeftNav";
+import { SearchTrigger } from "./SearchDialog";
 
 /**
  * Compact persistent header for small screens: publication title, a reading
@@ -39,12 +40,13 @@ export function MobileHeader({ parts }: { parts: NavPart[] }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink bg-paper lg:hidden">
-      <div className="flex h-13 items-center justify-between gap-3 px-4">
-        <Link href="/frontier" className="min-w-0">
+      <div className="flex h-13 items-center gap-2 px-4">
+        <Link href="/frontier" className="min-w-0 flex-1">
           <span className="block truncate font-sans text-base font-bold tracking-tight text-ink">
             The Sovereign Frontier
           </span>
         </Link>
+        <SearchTrigger compact />
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}

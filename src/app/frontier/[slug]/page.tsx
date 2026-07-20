@@ -161,6 +161,12 @@ export default async function ChapterPage({
           )}
 
           <ChapterPager previous={previous} next={next} />
+
+          {chapter.lastSynced && (
+            <p className="mt-6 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-faint">
+              ✴ Last updated · {chapter.lastSynced}
+            </p>
+          )}
         </article>
       </main>
 
