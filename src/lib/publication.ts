@@ -5,12 +5,12 @@ import matter from "gray-matter";
 /**
  * The publication registry.
  *
- * The single source of truth for The Sovereign Frontier is the frontmatter of
- * the MDX files in `content/frontier/`. This module reads that frontmatter and
+ * The single source of truth for the library is the frontmatter of the MDX
+ * files under `content/<volumeId>/`. This module reads that frontmatter and
  * assembles the manifest that drives chapter order, Part grouping, routes,
- * left navigation, mobile navigation, previous/next links, the landing page,
- * reading progress, and related-chapter references. Nothing else should
- * hard-code chapter structure.
+ * navigation, previous/next links, landing pages, reading progress, search,
+ * and related-chapter references — for every volume. Nothing else should
+ * hard-code publication structure.
  */
 
 export interface ChapterPlate {
@@ -26,6 +26,7 @@ export interface ChapterPlate {
 }
 
 export interface Chapter {
+  volumeId: string;
   title: string;
   shortTitle: string;
   slug: string;
@@ -51,30 +52,51 @@ export interface Part {
   chapters: Chapter[];
 }
 
-const CONTENT_DIR = path.join(process.cwd(), "content", "frontier");
+const CONTENT_ROOT = path.join(process.cwd(), "content");
 
 const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
 
-let cache: Chapter[] | null = null;
+/** Chapter-number label prefix per volume (CH_01, HB_01, …). */
+const LABEL_PREFIX: Record<string, string> = {
+  frontier: "CH",
+  handbook: "HB",
+  architecture: "AR",
+  standard: "ST",
+};
 
-export function getChapters(): Chapter[] {
-  if (cache) return cache;
+const caches = new Map<string, Chapter[]>();
+
+export function getVolumeIds(): string[] {
+  return fs
+    .readdirSync(CONTENT_ROOT, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name)
+    .sort();
+}
+
+export function getChapters(volumeId = "frontier"): Chapter[] {
+  const cached = caches.get(volumeId);
+  if (cached) return cached;
+
+  const dir = path.join(CONTENT_ROOT, volumeId);
+  if (!fs.existsSync(dir)) return [];
   const files = fs
-    .readdirSync(CONTENT_DIR)
+    .readdirSync(dir)
     .filter((f) => f.endsWith(".mdx"))
     .sort();
 
   const chapters = files.map((file): Chapter => {
-    const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
+    const raw = fs.readFileSync(path.join(dir, file), "utf8");
     const { data, content } = matter(raw);
     return {
+      volumeId,
       title: String(data.title),
       shortTitle: String(data.shortTitle ?? data.title),
       slug: String(data.slug),
       order: Number(data.order),
       part: Number(data.part),
       partTitle: String(data.partTitle),
-      volume: String(data.volume ?? "The Sovereign Frontier"),
+      volume: String(data.volume ?? ""),
       status: data.status === "published" ? "published" : "pending",
       summary: String(data.summary ?? ""),
       sourceNotionUrl: String(data.source_notion_url ?? ""),
@@ -98,17 +120,20 @@ export function getChapters(): Chapter[] {
   });
 
   chapters.sort((a, b) => a.order - b.order);
-  cache = chapters;
+  caches.set(volumeId, chapters);
   return chapters;
 }
 
-export function getChapter(slug: string): Chapter | undefined {
-  return getChapters().find((c) => c.slug === slug);
+export function getChapter(
+  slug: string,
+  volumeId = "frontier"
+): Chapter | undefined {
+  return getChapters(volumeId).find((c) => c.slug === slug);
 }
 
-export function getParts(): Part[] {
+export function getParts(volumeId = "frontier"): Part[] {
   const parts = new Map<number, Part>();
-  for (const chapter of getChapters()) {
+  for (const chapter of getChapters(volumeId)) {
     if (!parts.has(chapter.part)) {
       parts.set(chapter.part, {
         number: chapter.part,
@@ -122,11 +147,14 @@ export function getParts(): Part[] {
   return [...parts.values()].sort((a, b) => a.number - b.number);
 }
 
-export function getAdjacentChapters(slug: string): {
+export function getAdjacentChapters(
+  slug: string,
+  volumeId = "frontier"
+): {
   previous: Chapter | null;
   next: Chapter | null;
 } {
-  const chapters = getChapters();
+  const chapters = getChapters(volumeId);
   const index = chapters.findIndex((c) => c.slug === slug);
   if (index === -1) return { previous: null, next: null };
   return {
@@ -135,20 +163,34 @@ export function getAdjacentChapters(slug: string): {
   };
 }
 
-export function getRelatedChapters(slug: string): Chapter[] {
-  const chapter = getChapter(slug);
+export function getRelatedChapters(
+  slug: string,
+  volumeId = "frontier"
+): Chapter[] {
+  const chapter = getChapter(slug, volumeId);
   if (!chapter) return [];
   return chapter.related
-    .map((s) => getChapter(s))
+    .map((s) => getChapter(s, volumeId))
     .filter((c): c is Chapter => Boolean(c));
 }
 
+/** Route for a chapter in any volume. */
+export function routeOf(chapter: { volumeId: string; slug: string }): string {
+  return `/${chapter.volumeId}/${chapter.slug}`;
+}
+
+/** Legacy helper: route for a Volume I chapter slug. */
 export function chapterRoute(slug: string): string {
   return `/frontier/${slug}`;
 }
 
 export function formatChapterNumber(order: number): string {
   return String(order).padStart(2, "0");
+}
+
+/** Chapter label for a volume (e.g. CH_04, HB_02). */
+export function chapterLabel(volumeId: string, order: number): string {
+  return `${LABEL_PREFIX[volumeId] ?? "CH"}_${formatChapterNumber(order)}`;
 }
 
 export function partNumeral(part: number): string {
@@ -169,12 +211,13 @@ export interface NavChapter {
   title: string;
   shortTitle: string;
   slug: string;
+  route: string;
   order: number;
   status: "published" | "pending";
 }
 
-export function getNavManifest(): NavPart[] {
-  return getParts().map((part) => ({
+export function getNavManifest(volumeId = "frontier"): NavPart[] {
+  return getParts(volumeId).map((part) => ({
     number: part.number,
     numeral: part.numeral,
     title: part.title,
@@ -182,6 +225,7 @@ export function getNavManifest(): NavPart[] {
       title: c.title,
       shortTitle: c.shortTitle,
       slug: c.slug,
+      route: routeOf(c),
       order: c.order,
       status: c.status,
     })),

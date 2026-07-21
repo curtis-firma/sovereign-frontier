@@ -17,11 +17,60 @@ function PendingTag() {
   );
 }
 
+export interface NavBrand {
+  kicker: string;
+  title: string;
+  href: string;
+}
+
+export interface NavFooterLink {
+  href: string;
+  label: string;
+  glyph?: string;
+  soon?: boolean;
+}
+
+export interface NavFooterGroup {
+  heading?: string;
+  links: NavFooterLink[];
+}
+
+const FRONTIER_BRAND: NavBrand = {
+  kicker: "✴ Field guide · Vol. 01",
+  title: "The Sovereign Frontier",
+  href: "/frontier",
+};
+
+const FRONTIER_FOOTER: NavFooterGroup[] = [
+  { links: [{ href: "/frontier/glossary", label: "Glossary", glyph: "✴" }] },
+  {
+    heading: "The library",
+    links: [
+      { href: "/handbook", label: "The Settlemint Handbook", glyph: "02" },
+      {
+        href: "/architecture",
+        label: "The Firma Architecture",
+        glyph: "03",
+      },
+      {
+        href: "/standard",
+        label: "The Frontier Standard",
+        glyph: "04",
+        soon: true,
+      },
+    ],
+  },
+];
+
 export function LeftNav({
   parts,
+  brand = FRONTIER_BRAND,
+  footerGroups = FRONTIER_FOOTER,
   onNavigate,
 }: {
   parts: NavPart[];
+  brand?: NavBrand;
+  footerGroups?: NavFooterGroup[];
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
@@ -33,15 +82,15 @@ export function LeftNav({
   return (
     <nav aria-label="Chapters" className="font-sans text-sm">
       <Link
-        href="/frontier"
+        href={brand.href}
         onClick={onNavigate}
         className="group block border-b-2 border-ink pb-4"
       >
         <span className="block font-mono text-[0.6rem] font-medium uppercase tracking-[0.24em] text-ink-faint">
-          ✴ Field guide · Vol. 01
+          {brand.kicker}
         </span>
         <span className="mt-1.5 block font-sans text-lg font-bold leading-snug tracking-tight text-ink group-hover:text-accent">
-          The Sovereign Frontier
+          {brand.title}
         </span>
       </Link>
 
@@ -72,12 +121,11 @@ export function LeftNav({
               {!isCollapsed && (
                 <ul className="mt-2 space-y-px border-l border-ink/25">
                   {part.chapters.map((chapter) => {
-                    const href = `/frontier/${chapter.slug}`;
-                    const isActive = pathname === href;
+                    const isActive = pathname === chapter.route;
                     return (
                       <li key={chapter.slug}>
                         <Link
-                          href={href}
+                          href={chapter.route}
                           onClick={onNavigate}
                           aria-current={isActive ? "page" : undefined}
                           className={`-ml-px flex gap-2.5 border-l-2 py-1.5 pl-3 pr-2 leading-snug transition-colors duration-150 ${
@@ -108,66 +156,43 @@ export function LeftNav({
         })}
       </div>
 
-      <div className="mt-6 border-t border-ink/25 pt-4">
-        <Link
-          href="/frontier/glossary"
-          onClick={onNavigate}
-          aria-current={pathname === "/frontier/glossary" ? "page" : undefined}
-          className={`flex gap-2.5 py-1.5 leading-snug transition-colors duration-150 ${
-            pathname === "/frontier/glossary"
-              ? "font-medium text-accent"
-              : "text-ink-soft hover:text-ink"
-          }`}
-        >
-          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-clay">
-            ✴
-          </span>
-          <span>Glossary</span>
-        </Link>
-
-        <p className="mt-4 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
-          The library
-        </p>
-        <Link
-          href="/handbook"
-          onClick={onNavigate}
-          className="mt-1 flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
-        >
-          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
-            02
-          </span>
-          <span>
-            The Settlemint Handbook
-            <PendingTag />
-          </span>
-        </Link>
-        <Link
-          href="/architecture"
-          onClick={onNavigate}
-          className="flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
-        >
-          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
-            03
-          </span>
-          <span>
-            The Firma Architecture
-            <PendingTag />
-          </span>
-        </Link>
-        <Link
-          href="/standard"
-          onClick={onNavigate}
-          className="flex gap-2.5 py-1 leading-snug text-ink-soft transition-colors duration-150 hover:text-ink"
-        >
-          <span className="shrink-0 font-mono text-[0.65rem] leading-[1.8] text-ink-faint">
-            04
-          </span>
-          <span>
-            The Frontier Standard
-            <PendingTag />
-          </span>
-        </Link>
-      </div>
+      {footerGroups.map((group, gi) => (
+        <div key={gi} className="mt-6 border-t border-ink/25 pt-4">
+          {group.heading && (
+            <p className="mb-1 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-ink-faint">
+              {group.heading}
+            </p>
+          )}
+          {group.links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onNavigate}
+                aria-current={isActive ? "page" : undefined}
+                className={`flex gap-2.5 py-1 leading-snug transition-colors duration-150 ${
+                  isActive
+                    ? "font-medium text-accent"
+                    : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                <span
+                  className={`shrink-0 font-mono text-[0.65rem] leading-[1.8] ${
+                    link.glyph === "✴" ? "text-clay" : "text-ink-faint"
+                  }`}
+                >
+                  {link.glyph ?? "·"}
+                </span>
+                <span>
+                  {link.label}
+                  {link.soon && <PendingTag />}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      ))}
     </nav>
   );
 }

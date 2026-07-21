@@ -14,7 +14,7 @@ export interface Volume {
   /** The volume's function, per the Editorial Hub. */
   role: string;
   route: string;
-  status: "complete" | "forthcoming";
+  status: "complete" | "in-progress" | "forthcoming";
   description: string;
   scope: string[];
 }
@@ -37,7 +37,7 @@ export const volumes: Volume[] = [
     title: "The Settlemint Handbook",
     role: "How",
     route: "/handbook",
-    status: "forthcoming",
+    status: "in-progress",
     description:
       "The operational field manual for designing, establishing, maturing, and operating Settlemints — one module per operating domain, with practical guidance, checklists, examples, and maturity criteria.",
     scope: [
@@ -62,7 +62,7 @@ export const volumes: Volume[] = [
     title: "The Firma Architecture",
     role: "Technology",
     route: "/architecture",
-    status: "forthcoming",
+    status: "in-progress",
     description:
       "The emerging Firma technical and institutional architecture — structured like technical documentation, with every component labeled by maturity: concept, proposed, designed, prototyped, deployed, operational, or proven.",
     scope: [

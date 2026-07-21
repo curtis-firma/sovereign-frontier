@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Chapter } from "@/lib/publication";
-import { chapterRoute, formatChapterNumber } from "@/lib/publication";
+import { chapterLabel, routeOf } from "@/lib/publication";
 
 export function ChapterPager({
   previous,
@@ -16,11 +16,11 @@ export function ChapterPager({
     >
       {previous ? (
         <Link
-          href={chapterRoute(previous.slug)}
+          href={routeOf(previous)}
           className="group border border-ink bg-white/60 p-4 transition-all duration-150 hover:bg-white active:translate-x-px active:translate-y-px"
         >
           <span className="block font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-ink-faint">
-            ← Prev · CH_{formatChapterNumber(previous.order)}
+            ← Prev · {chapterLabel(previous.volumeId, previous.order)}
           </span>
           <span className="mt-1.5 block text-base font-bold leading-snug tracking-tight text-ink group-hover:text-accent">
             {previous.title}
@@ -31,11 +31,11 @@ export function ChapterPager({
       )}
       {next ? (
         <Link
-          href={chapterRoute(next.slug)}
+          href={routeOf(next)}
           className="group shadow-print-sm border border-ink bg-ink p-4 text-right transition-all duration-150 hover:bg-accent active:translate-x-px active:translate-y-px active:shadow-none"
         >
           <span className="block font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-paper/70">
-            CH_{formatChapterNumber(next.order)} · Next →
+            {chapterLabel(next.volumeId, next.order)} · Next →
           </span>
           <span className="mt-1.5 block text-base font-bold leading-snug tracking-tight text-paper">
             {next.title}

@@ -196,7 +196,9 @@ export default function FrontierLanding() {
                     className={`shrink-0 border px-1.5 py-0.5 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.12em] ${
                       volume.status === "complete"
                         ? "border-mesquite text-mesquite"
-                        : "border-ink-faint/60 text-ink-faint"
+                        : volume.status === "in-progress"
+                          ? "border-accent text-accent"
+                          : "border-ink-faint/60 text-ink-faint"
                     }`}
                   >
                     {volume.status}

@@ -1,5 +1,5 @@
 import GithubSlugger from "github-slugger";
-import { getChapters } from "./publication";
+import { chapterLabel, getChapters, getVolumeIds, routeOf } from "./publication";
 
 /**
  * Static full-text search index, built from the publication registry at
@@ -9,6 +9,9 @@ import { getChapters } from "./publication";
 export interface SearchRecord {
   chapter: string;
   chapterTitle: string;
+  /** e.g. CH_04, HB_02 */
+  label: string;
+  route: string;
   order: number;
   section: string;
   anchor: string;
@@ -32,8 +35,10 @@ function cleanLine(line: string): string {
 
 export function buildSearchIndex(): SearchRecord[] {
   const records: SearchRecord[] = [];
+  const chapters = getVolumeIds().flatMap((v) => getChapters(v));
 
-  for (const chapter of getChapters()) {
+  for (const chapter of chapters) {
+    if (chapter.status !== "published") continue;
     const slugger = new GithubSlugger();
     let section = "Overview";
     let anchor = "";
@@ -45,6 +50,8 @@ export function buildSearchIndex(): SearchRecord[] {
         records.push({
           chapter: chapter.slug,
           chapterTitle: chapter.title,
+          label: chapterLabel(chapter.volumeId, chapter.order),
+          route: routeOf(chapter),
           order: chapter.order,
           section,
           anchor,

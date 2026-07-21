@@ -4,14 +4,24 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavPart } from "@/lib/publication";
-import { LeftNav } from "./LeftNav";
+import { LeftNav, type NavBrand, type NavFooterGroup } from "./LeftNav";
 import { SearchTrigger } from "./SearchDialog";
 
 /**
  * Compact persistent header for small screens: publication title, a reading
  * progress bar, and a drawer containing the complete chapter navigation.
  */
-export function MobileHeader({ parts }: { parts: NavPart[] }) {
+export function MobileHeader({
+  parts,
+  brand,
+  footerGroups,
+  title = "The Sovereign Frontier",
+}: {
+  parts: NavPart[];
+  brand?: NavBrand;
+  footerGroups?: NavFooterGroup[];
+  title?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
   const pathname = usePathname();
@@ -41,9 +51,9 @@ export function MobileHeader({ parts }: { parts: NavPart[] }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink bg-paper lg:hidden">
       <div className="flex h-13 items-center gap-2 px-4">
-        <Link href="/frontier" className="min-w-0 flex-1">
+        <Link href={brand?.href ?? "/frontier"} className="min-w-0 flex-1">
           <span className="block truncate font-sans text-base font-bold tracking-tight text-ink">
-            The Sovereign Frontier
+            {title}
           </span>
         </Link>
         <SearchTrigger compact />
@@ -72,7 +82,12 @@ export function MobileHeader({ parts }: { parts: NavPart[] }) {
 
       {open && (
         <div className="fixed inset-x-0 top-[3.5rem] bottom-0 z-40 overflow-y-auto border-t border-ink bg-paper px-5 py-6">
-          <LeftNav parts={parts} onNavigate={() => setOpen(false)} />
+          <LeftNav
+            parts={parts}
+            brand={brand}
+            footerGroups={footerGroups}
+            onNavigate={() => setOpen(false)}
+          />
         </div>
       )}
     </header>

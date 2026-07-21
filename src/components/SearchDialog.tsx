@@ -6,10 +6,6 @@ import type { SearchRecord } from "@/lib/search";
 
 export const OPEN_SEARCH_EVENT = "open-frontier-search";
 
-function chapterNumber(order: number): string {
-  return String(order).padStart(2, "0");
-}
-
 function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -174,19 +170,19 @@ export function SearchDialog() {
           )}
           {!query && (
             <p className="px-4 py-6 text-center font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-faint">
-              Search all ten chapters
+              Search the whole library
             </p>
           )}
           <ul className="divide-y divide-rule">
             {results.map(({ record }) => (
-              <li key={`${record.chapter}-${record.anchor}`}>
+              <li key={`${record.route}-${record.anchor}`}>
                 <Link
-                  href={`/frontier/${record.chapter}${record.anchor ? `#${record.anchor}` : ""}`}
+                  href={`${record.route}${record.anchor ? `#${record.anchor}` : ""}`}
                   onClick={close}
                   className="block px-4 py-3 transition-colors hover:bg-white/70"
                 >
                   <span className="block font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-ink-faint">
-                    CH_{chapterNumber(record.order)} · {record.chapterTitle}
+                    {record.label} · {record.chapterTitle}
                   </span>
                   <span className="mt-0.5 block font-sans text-sm font-bold tracking-tight text-ink">
                     {record.section}

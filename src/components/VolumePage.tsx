@@ -1,11 +1,26 @@
 import Link from "next/link";
+import type { Chapter } from "@/lib/publication";
+import { chapterLabel, formatChapterNumber, routeOf } from "@/lib/publication";
 import { volumeNumber, type Volume } from "@/lib/volumes";
 
 /**
- * Landing page for a reserved (forthcoming) volume of the library.
- * Function, description, and scope come from the Editorial Hub's canon pages.
+ * Landing page for a library volume. Shows published chapters when they
+ * exist; otherwise the reserved state. Planned scope comes from the canon
+ * volume pages; `coveredScope` names the scope items already published.
  */
-export function VolumePage({ volume }: { volume: Volume }) {
+export function VolumePage({
+  volume,
+  chapters = [],
+  coveredScope = [],
+}: {
+  volume: Volume;
+  chapters?: Chapter[];
+  coveredScope?: string[];
+}) {
+  const published = chapters.filter((c) => c.status === "published");
+  const planned = volume.scope.filter((s) => !coveredScope.includes(s));
+  const groupLabel = published[0]?.partTitle ?? "Chapters";
+
   return (
     <main className="min-h-screen px-5 py-12 sm:px-8 lg:py-16">
       <article className="mx-auto max-w-2xl">
@@ -22,24 +37,59 @@ export function VolumePage({ volume }: { volume: Volume }) {
           </p>
         </header>
 
-        <div className="shadow-print mt-10 border border-ink bg-white/60 px-6 py-8 text-center">
-          <p className="inline-block border border-clay px-2 py-1 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-clay">
-            Status: forthcoming
-          </p>
-          <p className="mx-auto mt-3 max-w-md font-serif text-base leading-relaxed text-ink-soft">
-            This volume&apos;s drafts are being consolidated into canonical
-            chapters in the editorial workspace. It will publish here through
-            the same approval discipline as Volume I.
-          </p>
-        </div>
+        {published.length === 0 ? (
+          <div className="shadow-print mt-10 border border-ink bg-white/60 px-6 py-8 text-center">
+            <p className="inline-block border border-clay px-2 py-1 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-clay">
+              Status: forthcoming
+            </p>
+            <p className="mx-auto mt-3 max-w-md font-serif text-base leading-relaxed text-ink-soft">
+              This volume&apos;s drafts are being consolidated into canonical
+              chapters in the editorial workspace. It will publish here through
+              the same approval discipline as Volume I.
+            </p>
+          </div>
+        ) : (
+          <section aria-label={groupLabel} className="mt-10">
+            <div className="flex items-baseline justify-between border-b-2 border-ink pb-2">
+              <h2 className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink">
+                ✴ {groupLabel}
+              </h2>
+              <span className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-faint">
+                {formatChapterNumber(published.length)} published
+              </span>
+            </div>
+            <ol className="divide-y divide-rule">
+              {published.map((chapter) => (
+                <li key={chapter.slug}>
+                  <Link
+                    href={routeOf(chapter)}
+                    className="group flex gap-4 px-3 py-4 transition-colors duration-150 hover:bg-white/70"
+                  >
+                    <span className="shrink-0 pt-1 font-mono text-xs text-ink-faint">
+                      {chapterLabel(chapter.volumeId, chapter.order)}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-sans text-lg font-bold leading-snug tracking-tight text-ink group-hover:text-accent">
+                        {chapter.title}
+                      </span>
+                      <span className="mt-1 block font-serif text-[0.95rem] leading-relaxed text-ink-soft">
+                        {chapter.summary}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
-        {volume.scope.length > 0 && (
+        {planned.length > 0 && (
           <section aria-label="Planned scope" className="mt-12">
             <h2 className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              ✴ Planned scope
+              ✴ {published.length > 0 ? "Planned" : "Planned scope"}
             </h2>
             <ul className="mt-4 grid gap-x-8 gap-y-0.5 border-y border-ink py-3 sm:grid-cols-2">
-              {volume.scope.map((item) => (
+              {planned.map((item) => (
                 <li key={item} className="flex gap-2.5 py-1.5">
                   <span
                     aria-hidden
