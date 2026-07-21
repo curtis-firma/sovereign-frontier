@@ -33,9 +33,10 @@ export default function GlossaryPage() {
             Glossary
           </h1>
           <p className="mt-4 border-b border-rule pb-8 text-lg leading-relaxed text-ink-soft">
-            The guide&apos;s working vocabulary, gathered in one place. Every
-            definition is quoted from the chapter where the term is
-            established — follow the reference to read it in context.
+            The guide&apos;s working vocabulary, gathered in one place. Definitions
+            are quoted from the chapter where each term is established, or from
+            the canon glossary and the Firma organizational architecture —
+            follow the reference to read it in context.
           </p>
         </header>
 
@@ -64,10 +65,13 @@ export default function GlossaryPage() {
               </h2>
               <dl className="mt-4 space-y-6">
                 {group.map((entry) => {
-                  const chapter = getChapter(entry.source);
-                  const href =
-                    chapterRoute(entry.source) +
-                    (entry.anchor ? `#${entry.anchor}` : "");
+                  const chapter = entry.source
+                    ? getChapter(entry.source)
+                    : undefined;
+                  const href = entry.source
+                    ? chapterRoute(entry.source) +
+                      (entry.anchor ? `#${entry.anchor}` : "")
+                    : "";
                   return (
                     <div key={entry.term}>
                       <dt className="font-sans text-lg font-bold tracking-tight text-ink">
@@ -87,6 +91,24 @@ export default function GlossaryPage() {
                           </Link>
                         </dd>
                       )}
+                      {!chapter && entry.sourceLabel && (
+                        <dd className="mt-1.5">
+                          {entry.sourceHref ? (
+                            <a
+                              href={entry.sourceHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink-faint hover:text-accent hover:underline"
+                            >
+                              → {entry.sourceLabel}
+                            </a>
+                          ) : (
+                            <span className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink-faint">
+                              → {entry.sourceLabel}
+                            </span>
+                          )}
+                        </dd>
+                      )}
                     </div>
                   );
                 })}
@@ -96,7 +118,7 @@ export default function GlossaryPage() {
         </div>
 
         <footer className="mt-16 border-t-2 border-ink pt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-faint">
-          ✴ Definitions are canon from the chapters. The chapters govern.
+          ✴ Definitions are quoted canon. The chapters and canon sources govern.
         </footer>
       </article>
     </main>

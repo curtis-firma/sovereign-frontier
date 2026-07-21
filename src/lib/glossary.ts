@@ -9,11 +9,79 @@
 export interface GlossaryEntry {
   term: string;
   definition: string;
-  source: string;
+  /** Chapter slug the definition is quoted from (omit for non-chapter sources). */
+  source?: string;
   anchor?: string;
+  /** Label for non-chapter canon sources (e.g. the Final Glossary draft). */
+  sourceLabel?: string;
+  /** External link for non-chapter sources. */
+  sourceHref?: string;
 }
 
+const ORG_ARCHITECTURE = {
+  sourceLabel: "Firma org architecture",
+  sourceHref: "https://portal.firmalabs.org/ds/firma-org-architecture-atx",
+};
+
+const FINAL_GLOSSARY = {
+  sourceLabel: "Final Glossary — canon draft",
+};
+
 export const glossary: GlossaryEntry[] = [
+  {
+    term: "Governance",
+    definition:
+      "The system by which authority is assigned, decisions are made, accountability is maintained, disputes are resolved, and collective action is executed.",
+    ...FINAL_GLOSSARY,
+  },
+  {
+    term: "Collective action",
+    definition:
+      "The proven ability of people to decide and act together toward a shared outcome.",
+    ...FINAL_GLOSSARY,
+  },
+  {
+    term: "Firma",
+    definition:
+      "The broader ecosystem developing sovereign on-chain and on-the-ground infrastructure for the edges — one governed order expressed through three operating divisions: Capital stewards, Labs builds, Theosis forms, the Foundation governs.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "Firma Foundation",
+    definition:
+      "The governance layer of the Firma order. It establishes covenant, constitutional principles, and strategic alignment without directly managing operations; the divisions execute within its guardrails.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "Firma Capital",
+    definition:
+      "The stewardship, investment, and treasury division — manages financial resources, real assets, investment vehicles, and capital deployment.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "Firma Labs",
+    definition:
+      "The technology, infrastructure, and engineering division — builds the technical and physical infrastructure beneath the ecosystem.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "Firma Theosis",
+    definition:
+      "The formation, ministry, and mission division — forms people and cultivates community.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "Settlemint stack",
+    definition:
+      "The integrated protocol collection enabling functioning settlements — Firmamint, Governmint, Embodimint, Elemint, Figmint, Atonemint, and Testamint. The functions are canonical; module names and technical implementations remain provisional.",
+    ...ORG_ARCHITECTURE,
+  },
+  {
+    term: "District of Heaven",
+    definition: "A constituent local polity within the Nation of Heaven.",
+    source: "firma",
+    anchor: "districts-of-heaven",
+  },
   {
     term: "Abundance",
     definition: "Abundance is durable access to increasing useful capacity.",
