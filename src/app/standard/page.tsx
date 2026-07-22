@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VolumePage } from "@/components/VolumePage";
+import { getChapters } from "@/lib/publication";
 import { getVolume } from "@/lib/volumes";
 
 const volume = getVolume("standard")!;
@@ -9,6 +10,14 @@ export const metadata: Metadata = {
   description: volume.description,
 };
 
-export default function StandardVolumePage() {
-  return <VolumePage volume={volume} />;
+const COVERED_SCOPE = ["Sovereignty and autonomy vectors"];
+
+export default function StandardLanding() {
+  return (
+    <VolumePage
+      volume={volume}
+      chapters={getChapters("standard")}
+      coveredScope={COVERED_SCOPE}
+    />
+  );
 }

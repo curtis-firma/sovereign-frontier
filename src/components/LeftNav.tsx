@@ -52,12 +52,7 @@ const FRONTIER_FOOTER: NavFooterGroup[] = [
         label: "The Firma Architecture",
         glyph: "03",
       },
-      {
-        href: "/standard",
-        label: "The Frontier Standard",
-        glyph: "04",
-        soon: true,
-      },
+      { href: "/standard", label: "The Frontier Standard", glyph: "04" },
     ],
   },
 ];

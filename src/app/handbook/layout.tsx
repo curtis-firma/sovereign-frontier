@@ -15,7 +15,7 @@ const FOOTER: NavFooterGroup[] = [
     links: [
       { href: "/frontier", label: "The Sovereign Frontier", glyph: "01" },
       { href: "/architecture", label: "The Firma Architecture", glyph: "03" },
-      { href: "/standard", label: "The Frontier Standard", glyph: "04", soon: true },
+      { href: "/standard", label: "The Frontier Standard", glyph: "04" },
       { href: "/frontier/glossary", label: "Glossary", glyph: "✴" },
     ],
   },

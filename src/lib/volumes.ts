@@ -85,7 +85,7 @@ export const volumes: Volume[] = [
     title: "The Frontier Standard",
     role: "Governance and protocols",
     route: "/standard",
-    status: "forthcoming",
+    status: "in-progress",
     description:
       "The shared standards that allow distinct Settlemints and network polities to cooperate without becoming identical or centrally controlled — a standards library with numbered specifications, test criteria, and implementation status.",
     scope: [

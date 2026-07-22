@@ -4,9 +4,9 @@ import { MobileHeader } from "@/components/MobileHeader";
 import { SearchDialog, SearchTrigger } from "@/components/SearchDialog";
 
 const BRAND: NavBrand = {
-  kicker: "✴ Technology · Vol. 03",
-  title: "The Firma Architecture",
-  href: "/architecture",
+  kicker: "✴ Standards · Vol. 04",
+  title: "The Frontier Standard",
+  href: "/standard",
 };
 
 const FOOTER: NavFooterGroup[] = [
@@ -15,18 +15,18 @@ const FOOTER: NavFooterGroup[] = [
     links: [
       { href: "/frontier", label: "The Sovereign Frontier", glyph: "01" },
       { href: "/handbook", label: "The Settlemint Handbook", glyph: "02" },
-      { href: "/standard", label: "The Frontier Standard", glyph: "04" },
+      { href: "/architecture", label: "The Firma Architecture", glyph: "03" },
       { href: "/frontier/glossary", label: "Glossary", glyph: "✴" },
     ],
   },
 ];
 
-export default function ArchitectureLayout({
+export default function StandardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const parts = getNavManifest("architecture");
+  const parts = getNavManifest("standard");
 
   return (
     <div className="min-h-screen">
@@ -34,7 +34,7 @@ export default function ArchitectureLayout({
         parts={parts}
         brand={BRAND}
         footerGroups={FOOTER}
-        title="The Firma Architecture"
+        title="The Frontier Standard"
       />
 
       <div className="mx-auto flex max-w-[90rem]">
