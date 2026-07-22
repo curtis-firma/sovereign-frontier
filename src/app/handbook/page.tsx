@@ -11,9 +11,13 @@ export const metadata: Metadata = {
 };
 
 const COVERED_SCOPE = [
+  "Starting a Settlemint",
   "Membership and belonging",
   "Governance and dispute resolution",
   "Maturity stages and proof tests",
+  "Work, economy, and treasury",
+  "External relationships",
+  "ATX implementation case study",
 ];
 
 export default function HandbookLanding() {
