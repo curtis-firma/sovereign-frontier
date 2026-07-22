@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   description: volume.description,
 };
 
-const COVERED_SCOPE = ["Sovereignty and autonomy vectors"];
+const COVERED_SCOPE = [
+  "Sovereignty and autonomy vectors",
+  "Proof-of-function requirements",
+  "Maturity classifications",
+];
 
 export default function StandardLanding() {
   return (

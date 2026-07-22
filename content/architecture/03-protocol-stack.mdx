@@ -1,0 +1,188 @@
+---
+title: The Protocol Stack
+shortTitle: Protocol Stack
+slug: protocol-stack
+order: 3
+part: 1
+partTitle: Components
+volume: The Firma Architecture
+status: published
+summary: The Settlemint Stack is the integrated protocol stack combining the modular protocols required for a functioning settlement — Firmamint, Governmint, Embodimint, Elemint, Figmint, Atonemint, and Testamint.
+source_notion_url: https://app.notion.com/p/3a5be6ba49738183bd3be0eff9b23207
+last_synced: 2026-07-22
+related:
+  - firmamint
+  - realm
+---
+
+# The Protocol Stack
+
+> **The Settlemint Stack is the integrated protocol stack combining the modular protocols required for a functioning settlement — one of Firma's biggest differentiators — alongside identity systems, exchange systems, task coordination, energy, compute, housing, communications, and land and resource management.**
+
+Seven protocols are named:
+
+- **Firmamint** — foundational network, coordination, and interoperability protocol
+- **Governmint** — governance and jurisdiction launchpad
+- **Embodimint** — human identity and participation protocol
+- **Elemint** — digital representation of real-world assets
+- **Figmint** — economic and monetary coordination protocol
+- **Atonemint** — protocol of reconciliation
+- **Testamint** — sacred protocol layer, governed within Theosis and engineered by Labs
+
+The stack picture is simple: Firmamint is the substrate, and the other six protocols are designed to run on Firmamint (Testamint by way of the Settlemint Stack). [Firmamint](/architecture/firmamint) has its own component page; this page describes the stack as a whole.
+
+## Function first
+
+The governing discipline of this volume applies with full force here. A settlement does not need a protocol named anything in particular. It needs to make decisions, establish authority, resolve disputes, and correct leadership. It needs ways to allocate capital, coordinate exchange, account for contribution, manage infrastructure, remember obligations, house people, generate energy, and provide compute. Every protocol below is described function first: the human need, then the named implementation.
+
+> **The function is canonical before the brand name is canonical.**
+
+The functional architecture of a settlement — the eight domains a Settlemint must coordinate — is the stable part, and it lives in [the handbook's stack module](/handbook/stack). The named protocols on this page are implementations of those functions, and each carries a maturity label stating how far it is from proven.
+
+## Firmamint
+
+**The function.** Distinct people, Realms, Settlemints, and political communities need a shared way to coordinate, remember, exchange, compute, prove, and interoperate without collapsing into one centralized system.
+
+**The implementation.** Firmamint is the foundational network, coordination, and interoperability protocol — the shared substrate beneath the architecture, and the protocol infrastructure the other six protocols are designed to run on. It may serve every division — Capital, Labs, and Theosis alike:
+
+> **Firmamint can serve the whole ecosystem without governing the whole ecosystem. A shared protocol may support the order without becoming the authority over the order.**
+
+> **Firmamint may coordinate the stack. It does not substitute for the settlement.**
+
+**Placement.** Owned and technically stewarded by Firma Labs; governed by Protocol Governance under the Firma Foundation.
+
+**Maturity: proposed.** Firmamint remains an emerging substrate architecture. The substrate category and its boundaries are settled; the capabilities remain proposed. Its full treatment is on [its own page](/architecture/firmamint).
+
+## Governmint
+
+**The function.** A settlement needs a way to make decisions, establish authority, resolve disputes, and correct leadership. A vote alone is not enough — the settlement must be able to make decisions, execute them, allocate authority, resolve conflict, correct mistakes, and maintain legitimacy.
+
+**The implementation.** Governmint is the governance and jurisdiction launchpad of the stack. Per the conceptual volume's own discipline: governance is required; Governmint is one possible implementation.
+
+**Placement.** Owned and technically stewarded by Firma Labs; governed by Protocol Governance; designed to run on Firmamint.
+
+**Maturity: proposed.**
+
+## Embodimint
+
+**The function.** Every person participating in a community, Settlemint, or organization requires a trusted way to establish identity, personhood, membership, roles, credentials, contribution history, reputation, permissions, and standing. These records must be portable enough to move with the person while remaining private, contextual, and subject to appropriate consent. Identity and reputation should not be reduced to a public wallet address or a single universal score.
+
+**The implementation.** Embodimint is the human identity and participation protocol — Firma's identity and reputation protocol. It should distinguish between identity, membership, capability, contribution, reputation, authority, and economic ownership: related but not interchangeable. Reputation is contextual — a person may be trusted as a builder and unproven in governance — and the full history behind a reputation should not automatically be public; bounded, portable attestations can be derived without exposing the complete record.
+
+The boundary with [Realm](/architecture/realm) matters:
+
+> **Realm is the person's own domain — the personal edge. Embodimint is the identity and reputation system operating through that domain.**
+
+Realm should not replace Embodimint. Embodimint should not absorb the whole of Realm.
+
+**Placement.** Owned and technically stewarded by Firma Labs; governed by Protocol Governance; designed to run on Firmamint.
+
+**Maturity: proposed.**
+
+## Elemint
+
+**The function.** A settlement must coordinate land, housing, energy, water, infrastructure, equipment, and local production — and the real-world assets underneath them need a trustworthy digital representation before they can be coordinated, stewarded, or exchanged.
+
+**The implementation.** Elemint is the protocol for the digital representation of real-world assets — the foundational protocol for natural and elemental assets. In the organizational architecture it also carries an application, Elemint XPLR, an asset intelligence and exploration platform: remote mapping and digital mining of natural reserves, minerals, water, and other real-world assets. XPLR discovers and maps what the land holds; what it feeds is what Capital stewards.
+
+**Placement.** Owned and technically stewarded by Firma Labs; governed by Protocol Governance; designed to run on Firmamint.
+
+**Maturity: proposed.**
+
+## Figmint
+
+**The function.** A settlement needs real productive and economic activity: work, exchange, capital, treasury, contribution, compensation, public goods, ownership, and relationships with outside markets. A token alone is not an economy.
+
+**The implementation.** Figmint is the economic and monetary coordination protocol of the stack — the monetary and economic layer. Per the conceptual volume: economic coordination is required; Figmint is one possible implementation. Its exact monetary design is deliberately not specified here; the function is what is canonical.
+
+**Placement.** Owned by Firma Capital, technically stewarded by Firma Labs, governed by Protocol Governance; designed to run on Firmamint. Figmint is the first place the stack's ownership crosses divisions: Capital owns the mandate, Labs builds the protocol.
+
+**Maturity: proposed.**
+
+## Atonemint
+
+**The function.** A settlement must remember decisions, ownership, contribution, obligations, disputes, and agreements — and it must be able to bring them back into balance. Every meaningful interaction creates an obligation, and obligations left invisible or unreconciled corrode trust.
+
+**The implementation.** Atonemint is the protocol of reconciliation — the accounting and reconciliation layer of the Settlemint Stack. It records what each participant contributes, what each receives, what obligations exist between them, and whether those obligations have been fulfilled. As people, organizations, agents, and Settlemints exchange value, Atonemint continuously reconciles accounts, partnerships, ownership, computation, and commitments until every ledger reaches a coherent and trusted state.
+
+Reconciliation is not merely symbolic — it is computational. The protocol embeds the constitutional economics of the ecosystem: anti-hoarding, usury-free exchange, non-extractive incentives, constitutional ownership limits, and restorative settlement are enforced as protocol rules rather than left to policy or goodwill.
+
+> **Every meaningful interaction creates an obligation. Atonemint exists to reconcile those obligations until participants are once again in right relationship.**
+
+**Placement.** Owned by Firma Capital, technically stewarded by Firma Labs, governed by Protocol Governance; designed to run on Firmamint.
+
+**Maturity: proposed.**
+
+## Testamint
+
+**The function.** A covenantal people must remember who they are, what they believe, what they have received, what they must preserve, and what they are responsible to pass on — faith, covenant, witness, formation, inheritance, and continuity across generations.
+
+**The implementation.** Testamint is the sacred protocol layer of the stack, and its governance is unlike the other six. Its identity is ecclesial: bishops authorize nodes, parishes function as nodes, and its governing constraints come from the Church, not engineering. Every Testamint node is a parish, and the protocol adds sacred functions to the underlying Settlemint infrastructure.
+
+Testamint is governed within Firma Theosis and engineered through Firma Labs, under a dual-accountability model. Theosis owns the purpose, theological meaning, product requirements, and canonical approval; Labs owns the technical architecture, protocol engineering, security, and infrastructure; release is a joint gate. Labs does not decide what constitutes canonical authority, what a sacrament is, who may authorize a parish, what data may be recorded, or what Testamint must refuse to build.
+
+> **Engineering does not guess at what a sacred thing is.**
+
+**Placement.** Owned by Firma Theosis, technically stewarded by Firma Labs, governed by Protocol Governance; is designed to run on the Settlemint Stack and Firmamint.
+
+**Maturity: concept.** Testamint remains an emerging covenantal concept; its exact institutional and technical form remains provisional. Its governance placement — ecclesial custody within Theosis, engineering within Labs — is the settled part.
+
+## Who owns, who builds, who governs
+
+Every protocol carries its ownership, so there is never ambiguity about who owns what versus who builds what. Firma Labs is the technical steward of all seven; Protocol Governance, under the Firma Foundation, governs all seven. The divisions build and operate the protocols; Protocol Governance defines what they must honor.
+
+| Protocol | Owner | Technical steward | Governance |
+| --- | --- | --- | --- |
+| Firmamint | Firma Labs | Firma Labs | Protocol Governance |
+| Governmint | Firma Labs | Firma Labs | Protocol Governance |
+| Embodimint | Firma Labs | Firma Labs | Protocol Governance |
+| Elemint | Firma Labs | Firma Labs | Protocol Governance |
+| Figmint | Firma Capital | Firma Labs | Protocol Governance |
+| Atonemint | Firma Capital | Firma Labs | Protocol Governance |
+| Testamint | Firma Theosis | Firma Labs | Protocol Governance |
+
+Governmint, Embodimint, Elemint, Figmint, and Atonemint are designed to run on Firmamint as their protocol infrastructure; Testamint is designed to run on the Settlemint Stack and Firmamint. What Firmamint itself runs on remains an open implementation question, treated in [its component page](/architecture/firmamint).
+
+This mirrors the wider order described in [Where Firma Fits](/frontier/firma): the Foundation governs, the divisions operate, and a shared protocol may serve the whole without ruling the whole.
+
+## The gate each protocol must still pass
+
+The names above point at real functions. They are not yet a settled architecture. Before any module name becomes canonical, it must answer five questions:
+
+1. **What human or settlement problem does it solve?**
+2. **What is inside its boundary, and what is outside?**
+3. **How is it different from adjacent modules?**
+4. **What is its current proof status?**
+5. **Is the name necessary to explain the Settlemint model?**
+
+If these cannot be answered clearly, the term belongs in the working ledger rather than the canonical guide. Each protocol on this page has a first-pass answer to question one; questions two through five remain the gate.
+
+## The discipline
+
+The rule that governs this whole page:
+
+> **The function is canonical. The implementation is provisional.**
+
+Governance is required — Governmint is one possible implementation. Economic coordination is required — Figmint is one possible implementation. Identity and standing are required — Embodimint is one possible implementation. Settlement memory and reconciliation are required — a specific ledger is not automatically required. This rule prevents the architecture from becoming disguised product marketing.
+
+> **A product can change. The human function remains.**
+
+## What remains open
+
+These require separate proof and design:
+
+- final module boundaries — what is inside each protocol and what is outside,
+- which protocols are universal versus optional for a given Settlemint,
+- the exact relationships and interfaces among the seven protocols,
+- each protocol's proof status beyond naming and function,
+- which functions Firmamint should coordinate directly,
+- which data and authority must remain local to a Realm or Settlemint,
+- minimum technical requirements for a Firmamint-enabled Settlemint,
+- how a protocol is replaced without breaking settlement continuity,
+- and how the stack is governed across Realm, Settlemint, District, and Nation levels.
+
+> **Do not start with the module names. Start with what human life in place must actually be able to do.**
+
+---
+
+*Related: [Firmamint](/architecture/firmamint) · [Realm](/architecture/realm) · [The Settlemint Stack: Functions Before Modules](/handbook/stack) · [Where Firma Fits](/frontier/firma)*
