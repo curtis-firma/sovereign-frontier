@@ -14,6 +14,7 @@ const COVERED_SCOPE = [
   "Sovereignty and autonomy vectors",
   "Proof-of-function requirements",
   "Maturity classifications",
+  "Governance minimums",
 ];
 
 export default function StandardLanding() {
