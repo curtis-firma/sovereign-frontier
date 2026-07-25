@@ -1,0 +1,62 @@
+---
+title: Governmint
+shortTitle: Governmint
+slug: governmint
+order: 4
+part: 1
+partTitle: Components
+volume: The Firma Architecture
+status: published
+summary: The governance and jurisdiction layer — one possible implementation of the governance function every settlement requires.
+source_notion_url: https://app.notion.com/p/3a8be6ba4973810c8f62ed7cffdcebdc
+last_synced: 2026-07-25
+related:
+  - protocol-stack
+  - firmamint
+---
+
+## The function comes first
+
+A settlement needs a way to make decisions, establish authority, resolve disputes, and correct leadership. Stated in full, the settlement must be able to make decisions, execute them, allocate authority, resolve conflict, correct mistakes, and maintain legitimacy. A vote alone is not enough.
+
+> **Governance software is not automatically a government.**
+
+Voting tools, multisigs, constitutions, and smart contracts may support governance. They do not by themselves prove that legitimate authority exists or that decisions can be enforced. The function is what matters; the tool is judged by whether it serves it.
+
+The operational treatment of this function is published in the handbook at [Governance and Dispute Resolution](/handbook/governance); the minimum a settlement must be able to perform is specified in [Governance Minimums](/standard/governance-minimums).
+
+## The named implementation
+
+> **Governance is required. Governmint is one possible implementation.**
+
+Governmint is the governance and jurisdiction layer of the [Settlemint stack](/architecture/protocol-stack) — the named system through which a community may configure and operate the institutional side of settlement life. Per the organizational architecture, its scope covers constitutional frameworks, institutional authority, permissions, proposals, voting, reputation, and the lifecycle of a jurisdiction over time.
+
+It is governed within the Firma order under protocol governance and built by Firma Labs. Like the other application-layer protocols, it is designed to run on the [Firmamint](/architecture/firmamint) substrate.
+
+**Maturity: proposed.** Governmint is named in the organizational architecture with a function, an owner, and a governance placement. No source establishes it as deployed, operational, or proven. It remains subject to the [five-question module test](/architecture/protocol-stack) like every other named protocol.
+
+## The boundary it must hold
+
+A governance layer records, structures, and executes decisions. It does not manufacture legitimacy.
+
+> **Legitimacy is the belief that an authority has the right to rule or decide.**
+
+That belief comes from the people governed — from consent, covenant, law, tradition, representation, performance, office, ownership, or recognized spiritual authority — not from the software that records a vote. A protocol can make authority legible and decisions enforceable; it cannot make an illegitimate authority legitimate.
+
+The discipline the whole architecture applies to interfaces applies here most sharply:
+
+> **Simple experience. Legible authority.**
+
+However convenient a governance interface becomes, a member must still be able to understand what made a decision, who controls it, how it can be challenged, and what happens when it fails. A governance layer that hides authority behind convenience has failed its own purpose.
+
+## What a Governmint jurisdiction is not
+
+The word *sovereign* expresses a direction of travel, not an achieved status. A community operating a governance layer may gain real local authority while remaining subordinate to an existing sovereign state in criminal law, foreign relations, borders, and defense. Governance capability is not the same as jurisdiction, and jurisdiction is not the same as sovereignty — the distinctions are specified in [Sovereignty and Autonomy Vectors](/standard/vectors).
+
+> **Infrastructure may enable sovereignty. Infrastructure should not quietly become the sovereign.**
+
+## What remains open
+
+The exact charter frameworks, the mechanics of proposals and voting, the relationship between a Governmint jurisdiction and the surrounding legal order, and the pathway by which local governance gains external recognition all remain to be defined and proven. Those belong to implementation and to the political architecture, not to this conceptual page.
+
+> **The function is canonical. The implementation is provisional.**

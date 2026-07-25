@@ -15,6 +15,7 @@ const COVERED_SCOPE = [
   "Proof-of-function requirements",
   "Maturity classifications",
   "Governance minimums",
+  "External recognition and relationships",
 ];
 
 export default function StandardLanding() {
