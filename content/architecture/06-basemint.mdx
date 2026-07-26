@@ -1,0 +1,35 @@
+---
+title: Basemint
+shortTitle: Basemint
+slug: basemint
+order: 6
+part: 1
+partTitle: Components
+volume: The Firma Architecture
+status: published
+summary: The connective layer that keeps a settlement's economy from becoming a sealed room — how internal value reaches the world outside, described at the level of function, not mechanism.
+source_notion_url: https://app.notion.com/p/3a0be6ba49738091ae31c0ed5c4460dd
+last_synced: 2026-07-26
+related:
+  - firmamint
+  - protocol-stack
+  - governmint
+---
+
+## The function comes first
+
+A settlement's economy cannot be a sealed room. Whatever a community coordinates internally — work, contribution, exchange, treasury — still has to meet the world outside it: vendors who have never heard of the settlement, members who move between it and the wider economy, obligations that must be settled with people who use ordinary payment systems. An economy that cannot reach past its own edge traps the people inside it.
+
+The function Basemint names is that reach — letting a settlement's economic layer connect outward, **"without trapping users inside a closed monetary environment."**
+
+## The named implementation
+
+Basemint is the connective layer of the [Settlemint stack](/architecture/protocol-stack) economy: the protocol through which value inside a settlement can move across the boundary to systems outside it, and back. Where [Firmamint](/architecture/firmamint) is the substrate that lets settlements coordinate at all, and the [economic layer](/handbook/economy) is what a settlement uses within itself, Basemint is what keeps that internal economy interoperable with the wider world rather than isolated from it.
+
+**Maturity: proposed.** Basemint is named in the architecture with a function and a place in the stack. No source establishes it as deployed, operational, or proven.
+
+## What this page does not describe
+
+Basemint's internal workings — how value is actually converted, settled, and moved across that boundary — are implementation, not concept, and are not published here. This page states the function the component serves; the machinery that carries it belongs to the internal architecture. That restraint is deliberate: a public conceptual page should name what a component is *for*, not expose the monetary mechanism beneath it.
+
+> **The function is canonical. The implementation is provisional.**
