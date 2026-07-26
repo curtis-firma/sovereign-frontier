@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: volume.description,
 };
 
-const COVERED_SCOPE = ["Realm", "Firmamint", "Settlemint modules", "Governance infrastructure"];
+const COVERED_SCOPE = ["Realm", "Firmamint", "Settlemint modules", "Governance infrastructure", "Identity and reputation"];
 
 export default function ArchitectureLanding() {
   return (

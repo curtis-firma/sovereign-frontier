@@ -1,0 +1,55 @@
+---
+title: Embodimint
+shortTitle: Embodimint
+slug: embodimint
+order: 5
+part: 1
+partTitle: Components
+volume: The Firma Architecture
+status: published
+summary: The human identity and reputation layer — how a settlement remembers who a person is and what they have contributed, without reducing them to a score.
+source_notion_url: https://app.notion.com/p/3a9be6ba4973815cb7aafd404beda205
+last_synced: 2026-07-26
+related:
+  - realm
+  - protocol-stack
+  - governmint
+---
+
+## The function comes first
+
+Every settlement must remember its people — not as user records, but as persons with a history. Among the things a settlement must remember are **who contributed** and **what reputation was earned** — that memory of persons is what this component holds.
+
+The relationships it tracks — visitor, participant, member, resident, steward, representative, citizen — are the subject of the handbook module on [Membership and Belonging](/handbook/membership). This component is the system that records them.
+
+## The named implementation
+
+Embodimint is Firma's human identity and participation protocol. Per the organizational architecture, it is the identity layer of the [Settlemint stack](/architecture/protocol-stack): credentials, relationships, skills, reputation, roles, contribution history, and proof of embodied participation.
+
+It should distinguish between things that are related but not interchangeable — **identity, membership, capability, contribution, reputation, authority, and economic ownership**. A person may be a member without holding office, a steward without owning, a proven builder while unproven in governance. Collapsing these into one number destroys the information.
+
+**Maturity: proposed.** Embodimint is named in the organizational architecture with a function, an owner, and a governance placement. No source establishes it as deployed, operational, or proven. It remains subject to the [five-question module test](/architecture/protocol-stack).
+
+## The boundary: not a wallet, not a score
+
+The strongest discipline this component carries is what it must *not* become.
+
+> **Identity and reputation should not be reduced to a public wallet address or a single universal score.**
+
+Reputation is contextual — trusted as a builder, unproven in governance — and context is exactly what a single score erases. The full history behind a reputation should not automatically be public; bounded, portable attestations can be derived without exposing the complete record. The genesis Settlemint holds the sharp form of this discipline for itself — **no global reputation score** — and it binds the protocol too: nothing sensitive belongs on a permanent, public, universal record.
+
+An identity layer that produces a public, permanent, universal score has not solved the memory problem — it has built surveillance with better branding.
+
+## The relationship to Realm
+
+A person's identity lives at their own edge, not in a central registry.
+
+> **Realm is the person's own domain — the personal edge. Embodimint is the identity and reputation system operating through that domain.**
+
+The distinction matters: the [Realm](/architecture/realm) belongs to the person or household; Embodimint is the protocol through which identity, credentials, and earned standing move *with* them across the settlements and communities they participate in — private by default, contextual by design, disclosed by consent.
+
+## What remains open
+
+How attestations are issued and revoked, how reputation is scoped to context without leaking history, how identity moves between communities that do not fully trust each other, and how credentials survive the loss or change of devices all remain to be defined and proven. Those belong to implementation, not to this conceptual page.
+
+> **The function is canonical. The implementation is provisional.**
