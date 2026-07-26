@@ -16,6 +16,7 @@ const COVERED_SCOPE = [
   "Maturity classifications",
   "Governance minimums",
   "External recognition and relationships",
+  "Dispute and appeals protocols",
 ];
 
 export default function StandardLanding() {
