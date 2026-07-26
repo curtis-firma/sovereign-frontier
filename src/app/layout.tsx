@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sovereign-frontier.netlify.app"),
+  metadataBase: new URL("https://sovereignfrontier.guide"),
   title: {
     default: "The Sovereign Frontier",
     template: "%s — The Sovereign Frontier",

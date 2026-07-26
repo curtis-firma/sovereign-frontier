@@ -1,0 +1,15 @@
+# Canonical-domain redirects: thefrontier.guide (and its www) 301 to the
+# primary domain sovereignfrontier.guide, preserving path. The apex primary
+# and www.sovereignfrontier.guide are handled by Netlify's own primary/www
+# settings.
+[[redirects]]
+  from = "https://thefrontier.guide/*"
+  to = "https://sovereignfrontier.guide/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.thefrontier.guide/*"
+  to = "https://sovereignfrontier.guide/:splat"
+  status = 301
+  force = true

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getChapters, getVolumeIds, routeOf } from "@/lib/publication";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://sovereign-frontier.netlify.app";
+  const base = "https://sovereignfrontier.guide";
   return [
     { url: `${base}/frontier`, priority: 1 },
     ...getVolumeIds().flatMap((v) =>
