@@ -10,7 +10,7 @@ import {
 import { volumeNumber, volumes } from "@/lib/volumes";
 
 export const metadata: Metadata = {
-  title: "The Sovereign Frontier",
+  title: { absolute: "The Sovereign Frontier — A Field Guide" },
 };
 
 const PART_PLATES: Record<number, { src: string; alt: string }> = {
