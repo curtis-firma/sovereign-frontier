@@ -42,7 +42,12 @@ const FRONTIER_BRAND: NavBrand = {
 };
 
 const FRONTIER_FOOTER: NavFooterGroup[] = [
-  { links: [{ href: "/frontier/glossary", label: "Glossary", glyph: "✴" }] },
+  {
+    links: [
+      { href: "/frontier/glossary", label: "Glossary", glyph: "✴" },
+      { href: "/frontier/sources", label: "Sources", glyph: "✴" },
+    ],
+  },
   {
     heading: "The library",
     links: [
