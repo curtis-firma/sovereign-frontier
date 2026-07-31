@@ -57,6 +57,22 @@ export default function GlossaryPage() {
           </figcaption>
         </figure>
 
+        <figure className="mb-12">
+          <div className="shadow-print-sm border border-ink">
+            <Image
+              src="/plates/sovereign-frontier-plates-overview.webp"
+              alt="Field-guide overview sheet: the publication's core plates in miniature — building living nations, the Settlemint ecosystem, the progression from community to network state, the entity comparison, the distributed network state, and the Settlemint core layout"
+              width={1536}
+              height={1024}
+              className="block w-full"
+            />
+          </div>
+          <figcaption className="mt-2.5 font-mono text-[0.6rem] font-medium uppercase tracking-[0.16em] text-ink-faint">
+            ✴ Plate B · The field guide&apos;s core plates at a glance — an
+            overview sheet
+          </figcaption>
+        </figure>
+
         <div className="space-y-10">
           {[...groups.entries()].map(([letter, group]) => (
             <section key={letter} aria-label={`Terms beginning with ${letter}`}>
