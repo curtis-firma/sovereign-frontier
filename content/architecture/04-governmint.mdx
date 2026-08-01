@@ -10,6 +10,19 @@ status: published
 summary: The governance and jurisdiction layer — one possible implementation of the governance function every settlement requires.
 source_notion_url: https://app.notion.com/p/3a8be6ba4973810c8f62ed7cffdcebdc
 last_synced: 2026-07-25
+plates:
+  - src: "/plates/ar04-governance-function.webp"
+    width: 1448
+    height: 1086
+    alt: "Field-guide plate: loop plate of decide, execute, review, correct drawn over a ground line labeled legitimacy"
+    caption: "The governance function — decide, execute, review, correct"
+    display: full
+  - src: "/plates/ar04-software-assists-humans-govern.webp"
+    width: 1448
+    height: 1086
+    alt: "Field-guide plate: split plate with the console below and the human bench above; recommendations flow up, decisions flow down"
+    caption: "Software assists, humans govern"
+    display: full
 related:
   - protocol-stack
   - firmamint
@@ -24,6 +37,8 @@ A settlement needs a way to make decisions, establish authority, resolve dispute
 Voting tools, multisigs, constitutions, and smart contracts may support governance. They do not by themselves prove that legitimate authority exists or that decisions can be enforced. The function is what matters; the tool is judged by whether it serves it.
 
 The operational treatment of this function is published in the handbook at [Governance and Dispute Resolution](/handbook/governance); the minimum a settlement must be able to perform is specified in [Governance Minimums](/standard/governance-minimums).
+
+<Plate id="ar04-governance-function" />
 
 ## The named implementation
 
@@ -48,6 +63,8 @@ The discipline the whole architecture applies to interfaces applies here most sh
 > **Simple experience. Legible authority.**
 
 However convenient a governance interface becomes, a member must still be able to understand what made a decision, who controls it, how it can be challenged, and what happens when it fails. A governance layer that hides authority behind convenience has failed its own purpose.
+
+<Plate id="ar04-software-assists-humans-govern" />
 
 ## What a Governmint jurisdiction is not
 
