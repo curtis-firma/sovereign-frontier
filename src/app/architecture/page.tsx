@@ -14,7 +14,7 @@ const COVERED_SCOPE = ["Realm", "Firmamint", "Settlemint modules", "Governance i
 
 export default function ArchitectureLanding() {
   return (
-    <VolumePage
+    <VolumePage seal="/plates/seal-architecture.webp"
       volume={volume}
       chapters={getChapters("architecture")}
       coveredScope={COVERED_SCOPE}

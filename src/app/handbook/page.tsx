@@ -22,7 +22,7 @@ const COVERED_SCOPE = [
 
 export default function HandbookLanding() {
   return (
-    <VolumePage
+    <VolumePage seal="/plates/seal-handbook.webp"
       volume={volume}
       chapters={getChapters("handbook")}
       coveredScope={COVERED_SCOPE}

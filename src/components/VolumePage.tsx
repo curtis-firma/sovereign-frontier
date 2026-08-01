@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Chapter } from "@/lib/publication";
 import { chapterLabel, formatChapterNumber, routeOf } from "@/lib/publication";
@@ -12,10 +13,12 @@ export function VolumePage({
   volume,
   chapters = [],
   coveredScope = [],
+  seal,
 }: {
   volume: Volume;
   chapters?: Chapter[];
   coveredScope?: string[];
+  seal?: string;
 }) {
   const published = chapters.filter((c) => c.status === "published");
   const planned = volume.scope.filter((s) => !coveredScope.includes(s));
@@ -35,6 +38,20 @@ export function VolumePage({
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
             {volume.description}
           </p>
+          {seal ? (
+            <figure className="mt-8">
+              <Image
+                src={seal}
+                alt={`The ${volume.title} seal`}
+                width={160}
+                height={160}
+                className="block"
+              />
+              <figcaption className="mt-1 font-mono text-[0.6rem] font-medium uppercase tracking-[0.16em] text-ink-faint">
+                ✴ The volume seal
+              </figcaption>
+            </figure>
+          ) : null}
         </header>
 
         {published.length === 0 ? (

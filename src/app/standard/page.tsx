@@ -21,7 +21,7 @@ const COVERED_SCOPE = [
 
 export default function StandardLanding() {
   return (
-    <VolumePage
+    <VolumePage seal="/plates/seal-standard.webp"
       volume={volume}
       chapters={getChapters("standard")}
       coveredScope={COVERED_SCOPE}
