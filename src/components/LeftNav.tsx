@@ -45,6 +45,7 @@ const FRONTIER_FOOTER: NavFooterGroup[] = [
   {
     links: [
       { href: "/frontier/glossary", label: "Glossary", glyph: "✴" },
+      { href: "/frontier/plates", label: "The Plates", glyph: "✴" },
       { href: "/frontier/sources", label: "Sources", glyph: "✴" },
     ],
   },
