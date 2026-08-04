@@ -337,3 +337,87 @@ Field-guide plate in a vintage ATX Settlemint treatment: warm bone paper ground 
 ```
 Field-guide plate in a vintage ATX Settlemint treatment: warm bone paper ground (#F1F0E9), near-black ink, Texas Blue (#006FCC) and Mission Coral (#FF8574) accents, occasional acid-yellow sun disc (#F4FF00). Engraved / screen-printed / risograph texture with visible halftone grain. Monospace technical labels (JetBrains Mono style), strong grid, thin rules, small plate-number mark in a corner, a small eight-point star ornament. Swiss-editorial clarity, vintage field-manual printed feel. No glossy 3D, no photorealism, no gradients, no corporate-infographic look. Single civic seal / cartouche: bold near-black ink mark centered on plain bone ground; no text outside the seal itself. Aspect ratio 1:1 square. Create this plate: STANDARD SEAL — a gauge needle inside a surveyor's roundel. Keep all text short, correct, and legible.
 ```
+
+## HB-09 people-covenant
+
+```
+Field-guide plate in a vintage ATX Settlemint treatment: warm bone paper ground (#F1F0E9), near-black ink, Texas Blue (#006FCC) and Mission Coral (#FF8574) accents. Engraved / risograph texture, halftone grain, monospace labels, plate-number corner mark, eight-point star ornament. No glossy 3D, no photorealism. Landscape bone info-plate, 3:2. Create this plate: THE THRESHOLD OF "WE" — three engraved stages left to right: AN AUDIENCE PAYS ATTENTION (rows facing a stage), A COMMUNITY FORMS RELATIONSHIPS (clusters facing each other), A PEOPLE UNDERSTANDS ITSELF AS A "WE" (a circle around a fire with a shared banner). Mono test line beneath: DO THEY BELONG TO ONE ANOTHER IN A DURABLE, CONSEQUENTIAL WAY? Keep all text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: THE BINDING PRINCIPLE — a keystone arch: stones labeled CONVENIENCE, ATTENTION, SPECULATION crumbling at the edges; the keystone labeled COVENANT / BINDING PRINCIPLE holding. Caption strip: WITHOUT IT, ALIGNMENT DISSOLVES THE MOMENT CONVENIENCE DOES. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: HOUSEHOLDS ARE A REAL UNIT — the civil architecture as an engraved strip: PERSON → HOUSEHOLD → REALM → SETTLEMINT → DISTRICT → NATION, each with a small emblem; the HOUSEHOLD stage highlighted in coral. Footer: NOT A BILLING CONVENIENCE. Keep text short, correct, legible.
+```
+
+## HB-10 land-place
+
+```
+Same treatment. Landscape 3:2 info-plate: WHAT LAND PROVES — a single framed deed labeled YOU HAVE LAND beside a checklist of ten unproven items (live well, remain, produce, legitimate authority, resolve conflict, allocate, resilient infrastructure, economy, a people, sovereignty) all unchecked. Caption: LAND PROVES ONE THING. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: SETTLEMENT MATURITY — five engraved stages: SITE (survey stakes), OCCUPIED PLACE (tents and one cabin), SETTLEMENT (buildings and a well), SETTLEMINT (integrated systems, star mark), MATURE SETTLEMINT (full working place with orchard). Mono line: ONE MONTH OF OCCUPANCY PROVES TEMPORARY HABITATION. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Austere instrument card, landscape 3:2: STEWARDSHIP OF PLACE — a work-order card with six numbered duties: RESTORATION, MAINTENANCE, PRIORITIZATION, BUDGETING, OWNERSHIP CLARITY, ACCOUNTABLE RESPONSIBILITY; stamp: A STEWARDED PLACE IS GROWN. Keep text short, correct, legible.
+```
+
+## HB-11 housing-infrastructure
+
+```
+Same treatment. Landscape 3:2 info-plate: HABITATION MUST BE PROVED — two engraved panels: TEMPORARY OCCUPANCY (packed bags by the door, one month on the calendar) vs DURABLE PRESENCE (garden grown in, tools hung, seasons marked). Caption: PEOPLE CAN STAY OR ESTABLISH DURABLE PRESENCE. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Blueprint plate, deep Texas Blue ground, white linework, 3:2: PUBLIC, COMMON, PRIVATE — plan of one settlement block with three hatchings keyed PUBLIC (road, square), COMMON (workshop, well, kitchen), PRIVATE (dwellings), with a legend. Note: SHARED DOES NOT MEAN UNGOVERNED. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Austere instrument card, 3:2: MAINTENANCE IS THE PROOF — a maintenance logbook page with dated entries (inspected, repaired, replaced, verified) and a stamp: INSTALLED IS A CLAIM. MAINTAINED IS A CAPABILITY. Keep text short, correct, legible.
+```
+
+## HB-12 energy-compute
+
+```
+Same treatment. Landscape 3:2 info-plate: OPERATIONAL AUTONOMY IS NOT LEGAL SOVEREIGNTY — an engraved microgrid and compute shed producing 100% local power inside a surveyed boundary, while a larger boundary line labeled THE LAW OF THE SURROUNDING STATE encloses it all. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: THE DEPENDENCY PROFILE — a microgrid drawn honestly: LOCAL (panels, battery, controller) in blue; IMPORTED (components, parts supply, law) in coral, each with a supply line offsite. Caption: NOT CONTRADICTIONS. PROFILES. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: PRIVATE INSIDE, SHARED PROOFS OUT — two columns: COMPUTE (private: prompts, workloads, data; shared: availability, completed work, accounting) and ENERGY (private: telemetry, device behavior; shared: excess capacity, delivery confirmation). A membrane line between inside and out. Keep text short, correct, legible.
+```
+
+## HB-13 public-goods
+
+```
+Same treatment. Landscape 3:2 info-plate: WHAT A COMMONS ACTUALLY IS — an engraved shared workshop ringed by four posts labeled RULES, STEWARDSHIP, MAINTENANCE, LEGITIMATE ACCESS. Caption: NOT SIMPLY SOMETHING FREE. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Austere instrument card, 3:2: THE CONTRIBUTION RECORD — a ledger card: WHO CONTRIBUTED, WHAT WAS BUILT, WHEN, WITNESSED BY, with a stamp: CONSUMED WITHOUT RECORD IS NOT HONORED. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Austere instrument card, 3:2: THE FIVE QUESTIONS — numbered gauge card: 1 HOW IS CONTRIBUTION RECOGNIZED, 2 HOW ARE CONTRIBUTORS PROTECTED, 3 HOW ARE FREE RIDERS HANDLED, 4 HOW IS THE COMMONS GOVERNED, 5 WHEN DOES CONTRIBUTION CREATE RETURN. Stamp: OPEN. Keep text short, correct, legible.
+```
+
+## HB-14 resilience-continuity
+
+```
+Same treatment. Landscape 3:2 info-plate: THE CONTINUITY TEST — a six-spoke wheel, each spoke a condition: AFTER ATTENTION FADES, DURING CONFLICT, WHEN MONEY TIGHTENS, WHEN LEADERSHIP CHANGES, WHEN INFRASTRUCTURE FAILS, WHEN PEOPLE DISAGREE. Hub: DOES IT STILL WORK? Keep text short, correct, legible.
+```
+
+```
+Same treatment. Austere instrument card, 3:2: FAILURE IS EVIDENCE — a failure-log specimen card: WHAT BROKE, THE RESPONSE, TIME TO RESTORE, WHAT CHANGED; stamped RECORDED. Caption: A SYSTEM THAT TURNS EVERY FAILURE INTO NARRATIVE CANNOT LEARN. Keep text short, correct, legible.
+```
+
+```
+Same treatment. Landscape 3:2 info-plate: THE DOMAIN THAT ANSWERS WHEN THINGS BREAK — one engraved building with six bays: CARE FOR CHILDREN, CARE FOR THE SICK, CARE FOR THE ELDERLY, EMERGENCY RESPONSE, MAINTENANCE, SUCCESSION. Footer: EVERYTHING ELSE IN THE STACK ASSUMES IT. Keep text short, correct, legible.
+```
